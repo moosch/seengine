@@ -382,7 +382,7 @@ void getFamilyDeviceQueues(VkDeviceQueueCreateInfo *queues, QueueFamilyIndices i
 void createLogicalDevice(App *pApp) {
   QueueFamilyIndices indices = findQueueFamilies(pApp->physicalDevice, pApp->surface);
 
-  VkPhysicalDeviceFeatures deviceFeatures;
+  VkPhysicalDeviceFeatures deviceFeatures = {};
   vkGetPhysicalDeviceFeatures(pApp->physicalDevice, &deviceFeatures);
 
   VkDeviceQueueCreateInfo queues[2];
@@ -1057,8 +1057,8 @@ VkExtent2D chooseSwapExtent(GLFWwindow *window, VkSurfaceCapabilitiesKHR capabil
 }
 
 u32 rateDeviceSuitability(VkPhysicalDevice device, VkSurfaceKHR surface) {
-  VkPhysicalDeviceProperties deviceProperties;
-  VkPhysicalDeviceFeatures deviceFeatures;
+  VkPhysicalDeviceProperties deviceProperties = {};
+  VkPhysicalDeviceFeatures deviceFeatures = {};
   vkGetPhysicalDeviceProperties(device, &deviceProperties);
   vkGetPhysicalDeviceFeatures(device, &deviceFeatures);
 
